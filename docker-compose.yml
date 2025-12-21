@@ -1,0 +1,42 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: davyemane-portfolio:latest
+    container_name: davyemane-portfolio
+    ports:
+      - "127.0.0.1:3000:80"  # Bind uniquement sur localhost pour plus de sécurité
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    labels:
+      - "com.davyemane.description=Portfolio personnel de EMANE BILE Felicien Davy"
+      - "com.davyemane.version=1.0.0"
+    # Limites de ressources (optionnel mais recommandé)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  portfolio-network:
+    driver: bridge
