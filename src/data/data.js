@@ -11,7 +11,7 @@ export const personalInfo = {
   twitter: "davyemane",
   openToRemote: true,
   cvUrl: "/CV_EMANE_BILE_Felicien_Davy.pdf",
-  photo: "/photo.png"
+  photo: "/davy.png"
 };
 
 export const about = {
