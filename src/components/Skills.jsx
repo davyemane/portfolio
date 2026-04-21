@@ -1,72 +1,72 @@
 import React from 'react';
 import {
-  FaProjectDiagram,
-  FaServer,
-  FaDocker,
-  FaDatabase,
-  FaLinux,
-  FaGitAlt
+  FaServer, FaDocker, FaDatabase, FaGitAlt, FaMobileAlt
 } from 'react-icons/fa';
+import { FaChartLine } from 'react-icons/fa';
 import { skills } from '../data/data';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
+const iconMap = {
+  FaServer,
+  FaDocker,
+  FaDatabase,
+  FaGitAlt,
+  FaMobileAlt,
+  FaChartLine,
+};
+
 const Skills = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
-  const [gridRef, gridVisible] = useScrollAnimation();
+  const [bodyRef, bodyVisible] = useScrollAnimation();
 
-  // Map icon names to actual icon components
-  const iconMap = {
-    FaProjectDiagram,
-    FaServer,
-    FaDocker,
-    FaDatabase,
-    FaLinux,
-    FaGitAlt
-  };
+  const entries = Object.entries(skills);
+  const half = Math.ceil(entries.length / 2);
+  const leftCol = entries.slice(0, half);
+  const rightCol = entries.slice(half);
 
-  const getIcon = (iconName) => {
-    const IconComponent = iconMap[iconName];
-    return IconComponent ? <IconComponent /> : null;
+  const renderGroup = ([category, data]) => {
+    const IconComponent = iconMap[data.icon];
+    return (
+      <div key={category} className="skill-group">
+        <div className="skill-group-title">
+          <div
+            className="skill-group-icon"
+            style={{ background: `${data.color}18`, color: data.color }}
+          >
+            {IconComponent && <IconComponent />}
+          </div>
+          <span>{category}</span>
+        </div>
+        <div className="skill-tags">
+          {data.items.map((item, i) => (
+            <span key={i} className="skill-tag">{item}</span>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
-    <section id="skills" className="section" style={{ backgroundColor: 'var(--bg)' }}>
-      <h2
-        ref={titleRef}
-        className={`section-title ${titleVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}`}
-      >
-        Technical Skills
-      </h2>
-      <div
-        ref={gridRef}
-        className={`skills-grid ${gridVisible ? 'stagger-children animated' : 'stagger-children'}`}
-      >
-        {Object.entries(skills).map(([category, skillData]) => (
-          <div key={category} className="skill-category hover-lift">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <div style={{
-                fontSize: '1.75rem',
-                color: skillData.color,
-                background: `${skillData.color}15`,
-                padding: '0.5rem',
-                borderRadius: '0.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                {getIcon(skillData.icon)}
-              </div>
-              <h3 style={{ margin: 0, color: skillData.color }}>{category}</h3>
-            </div>
-            <ul>
-              {skillData.items.map((skill, index) => (
-                <li key={index}>{skill}</li>
-              ))}
-            </ul>
+    <div className="section-alt">
+      <section id="skills" className="section">
+        <div ref={titleRef} className={titleVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}>
+          <p className="section-label">Skills</p>
+          <h2 className="section-title">Technical <span>Stack</span></h2>
+        </div>
+
+        <div
+          ref={bodyRef}
+          className={`skills-two-col ${bodyVisible ? 'animate-fade-in-up delay-200' : 'animate-on-scroll'}`}
+        >
+          <div className="skills-col">
+            {leftCol.map(renderGroup)}
           </div>
-        ))}
-      </div>
-    </section>
+          <div className="skills-col">
+            {rightCol.map(renderGroup)}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

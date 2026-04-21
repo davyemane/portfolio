@@ -5,83 +5,59 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Contact = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
-  const [contentRef, contentVisible] = useScrollAnimation();
+  const [bodyRef, bodyVisible] = useScrollAnimation();
 
   return (
-    <section id="contact" className="section contact">
-      <div className="contact-content">
-        <h2
-          ref={titleRef}
-          className={`section-title ${titleVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}`}
-          style={{ color: 'var(--white)' }}
-        >
-          Get In Touch
-        </h2>
+    <div className="contact">
+      <div className="contact-inner">
+        <div ref={titleRef} className={titleVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}>
+          <p className="section-label" style={{ justifyContent: 'center' }}>Contact</p>
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Let's <span>Work Together</span>
+          </h2>
+        </div>
+
         <p
-          className={contentVisible ? 'animate-fade-in-up delay-200' : 'animate-on-scroll'}
-          style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'var(--light-gray)' }}
+          ref={bodyRef}
+          className={`contact-subtitle ${bodyVisible ? 'animate-fade-in-up delay-200' : 'animate-on-scroll'}`}
         >
-          I'm currently open to remote opportunities. Feel free to reach out!
+          I'm currently open to remote opportunities. Whether it's a project, a job offer,
+          or just a chat — my inbox is always open.
         </p>
 
-        <div
-          ref={contentRef}
-          className={`contact-info ${contentVisible ? 'stagger-children animated' : 'stagger-children'}`}
-        >
-          <div className="contact-item">
+        {/* Contact cards */}
+        <div className={`contact-cards ${bodyVisible ? 'stagger-children animated' : 'stagger-children'}`}>
+          <a href={`mailto:${personalInfo.email}`} className="contact-card">
             <FaEnvelope />
-            <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
-          </div>
-          <div className="contact-item">
+            {personalInfo.email}
+          </a>
+          <a href={`tel:${personalInfo.phone}`} className="contact-card">
             <FaPhone />
-            <a href={`tel:${personalInfo.phone}`}>{personalInfo.phone}</a>
-          </div>
-          <div className="contact-item">
+            {personalInfo.phone}
+          </a>
+          <span className="contact-card" style={{ cursor: 'default' }}>
             <FaMapMarkerAlt />
-            <span>{personalInfo.location}</span>
-          </div>
+            {personalInfo.location}
+          </span>
         </div>
-        
-        <div className={`social-links ${contentVisible ? 'animate-fade-in-up delay-400' : 'animate-on-scroll'}`}>
-          <a
-            href={personalInfo.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link hover-scale"
-            title="GitHub"
-          >
+
+        {/* Social */}
+        <div className={`social-links ${bodyVisible ? 'animate-fade-in-up delay-400' : 'animate-on-scroll'}`}>
+          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="social-link github" title="GitHub">
             <FaGithub />
           </a>
-          <a
-            href={personalInfo.gitlab}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link hover-scale"
-            title="GitLab"
-          >
+          <a href={personalInfo.gitlab} target="_blank" rel="noopener noreferrer" className="social-link gitlab" title="GitLab">
             <FaGitlab />
           </a>
-          <a
-            href={personalInfo.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link hover-scale"
-            title="LinkedIn"
-          >
+          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="social-link linkedin" title="LinkedIn">
             <FaLinkedin />
           </a>
-          <a
-            href={`https://twitter.com/${personalInfo.twitter}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link hover-scale"
-            title="Twitter"
-          >
+          <a href={`https://twitter.com/${personalInfo.twitter}`} target="_blank" rel="noopener noreferrer" className="social-link twitter" title="Twitter">
             <FaTwitter />
           </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

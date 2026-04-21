@@ -10,7 +10,8 @@ export const personalInfo = {
   gitlab: "https://gitlab.com/davyemane",
   twitter: "davyemane",
   openToRemote: true,
-  cvUrl: "/CV_EMANE_BILE_Felicien_Davy.pdf"
+  cvUrl: "/CV_EMANE_BILE_Felicien_Davy.pdf",
+  photo: "/photo.png"
 };
 
 export const about = {
@@ -30,66 +31,77 @@ export const languages = [
 ];
 
 export const skills = {
-  "Software Engineering": {
-    icon: "FaProjectDiagram",
-    color: "#3b82f6",
-    items: [
-      "Software requirements analysis",
-      "System and application design",
-      "Technical documentation & design documents",
-      "UML, Merise",
-      "Agile methodologies (SCRUM)"
-    ]
-  },
   "Backend & API Development": {
     icon: "FaServer",
-    color: "#10b981",
+    color: "#3b82f6",
     items: [
-      "RESTful API design and implementation",
-      "API documentation with Swagger / OpenAPI",
-      "Python: Django, FastAPI, Flask",
+      "Django 5/6 & Django REST Framework",
+      "FastAPI, Flask",
       "PHP: Symfony",
-      "Authentication & authorization (JWT, sessions)",
-      "Integration with frontend applications"
+      "ASGI (Uvicorn) & WebSockets (Django Channels)",
+      "RESTful API design & Swagger / OpenAPI",
+      "JWT, sessions, RBAC authentication",
+      "Celery & Celery Beat (async tasks)"
     ]
   },
-  "DevOps & Deployment": {
+  "Databases & Storage": {
+    icon: "FaDatabase",
+    color: "#10b981",
+    items: [
+      "PostgreSQL 16",
+      "MongoDB 7 (mongoengine, pymongo)",
+      "Redis 7 (cache, broker, pub/sub)",
+      "Elasticsearch 8 (full-text search)",
+      "PgBouncer (connection pooling)",
+      "Database modeling & optimization"
+    ]
+  },
+  "DevOps & Infrastructure": {
     icon: "FaDocker",
     color: "#0ea5e9",
     items: [
       "Docker & Docker Compose",
-      "Continuous Deployment pipelines",
-      "CI/CD concepts (Git-based workflows)",
-      "Automated testing integration",
-      "Basic Jenkins usage",
-      "Server deployment & application delivery"
+      "Nginx (load balancer, reverse proxy, rate limiting)",
+      "CI/CD — GitHub Actions + Tailscale",
+      "Cloudflare Tunnel (CDN & secure exposure)",
+      "Automated testing & health-check endpoints",
+      "Server deployment & migration workflows"
     ]
   },
-  "Databases & Data Management": {
-    icon: "FaDatabase",
+  "Monitoring & Observability": {
+    icon: "FaChartLine",
     color: "#f59e0b",
     items: [
-      "PostgreSQL, MySQL",
-      "MongoDB",
-      "Redis",
-      "Database modeling & optimization"
+      "Portainer (container management UI)",
+      "Prometheus (metrics collection)",
+      "Grafana (dashboards & alerts)",
+      "cAdvisor (container resource metrics)",
+      "Node Exporter, Redis Exporter, MongoDB Exporter",
+      "PostgreSQL Exporter"
     ]
   },
-  "Operating Systems": {
-    icon: "FaLinux",
+  "Mobile & Frontend": {
+    icon: "FaMobileAlt",
+    color: "#8b5cf6",
+    items: [
+      "Flutter & Dart",
+      "Supabase (self-hosted)",
+      "Firebase (FCM push notifications)",
+      "MapLibre GL (cartography)",
+      "Tailwind CSS",
+      "HTML / CSS"
+    ]
+  },
+  "Software Engineering & Tools": {
+    icon: "FaGitAlt",
     color: "#ef4444",
     items: [
       "Linux (Ubuntu – daily professional use)",
-      "Server environment & basic system administration"
-    ]
-  },
-  "Version Control & Collaboration": {
-    icon: "FaGitAlt",
-    color: "#8b5cf6",
-    items: [
-      "Git",
-      "GitHub, GitLab",
-      "Code reviews & collaborative development"
+      "Git, GitHub, GitLab",
+      "Agile / SCRUM methodology",
+      "UML, Merise",
+      "Technical documentation & design documents",
+      "Code review & team collaboration"
     ]
   }
 };
@@ -97,84 +109,110 @@ export const skills = {
 export const projects = [
   {
     id: 1,
-    title: "DIGITAGRO API v2.0",
-    subtitle: "Agrosylvopastoral Platform (Backend & DevOps)",
-    period: "Since July 2025",
-    company: "Hoop SARL",
-    location: "Yaounde, Cameroon",
-    description: "Production-ready REST API for a national agrosylvopastoral platform connecting producers, transporters, distributors, and consumers",
+    title: "E-Testing Suite",
+    subtitle: "EdTech Platform — Quiz & Learning Management",
+    period: "2024 - Present",
+    company: "Personal / Client Project",
+    location: "Cameroon",
+    description: "Full-featured EdTech platform enabling individuals to subscribe by subject and progress through adaptive quizzes, and companies/schools to manage bulk subscriptions for their teams.",
     achievements: [
-      "Designed and implemented a production-ready REST API",
-      "Architected a dynamic multi-role user system with automatic role activation",
-      "Built secure authentication and authorization (token-based auth, RBAC)",
-      "Implemented core business modules: production management, orders, evaluations, notifications",
-      "Integrated real-time notifications using WebSockets and Redis",
-      "Documented the entire API using Swagger / OpenAPI",
-      "Implemented automated tests and health-check endpoints",
-      "Containerized the application using Docker & Docker Compose",
-      "Designed deployment workflows including migrations and service health validation"
+      "Architected a high-performance ASGI backend (Uvicorn) supporting 1,000–100,000 concurrent users",
+      "Built 10+ business modules: school hierarchy, adaptive quiz engine, B2B contracts, billing, analytics",
+      "Integrated Mobile Money & CinetPay payment gateway with subscription management",
+      "Implemented real-time notifications via WebSockets (Django Channels + Redis)",
+      "Deployed Elasticsearch 8 for full-text search with Redis caching layer",
+      "Set up async task processing with Celery + Celery Beat for scheduled jobs",
+      "Configured CI/CD pipeline with GitHub Actions, Tailscale, and Cloudflare Tunnel",
+      "Dual database architecture: PostgreSQL 16 (main) + MongoDB 7 (logs)"
     ],
-    stack: ["Django REST Framework", "PostgreSQL", "Redis", "Docker", "Linux", "Git"],
-    icon: "FaLeaf",
-    color: "#22c55e",
-    featured: true
+    stack: ["Django 5", "DRF", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch", "Celery", "Docker", "GitHub Actions"],
+    icon: "FaFlask",
+    color: "#6366f1",
+    featured: true,
+    demo: "https://e-testingsuite.com",
+    github: "https://github.com/davyemane/"
   },
   {
     id: 2,
-    title: "Regional Annex Hospital of Edea",
-    subtitle: "Institutional Website",
-    period: "Since November 2025",
-    company: "Regional Annex Hospital of Edea",
-    location: "Edéa, Cameroon",
-    description: "Official institutional website for the Regional Annex Hospital",
-    achievements: [
-      "Designed and developed the official institutional website",
-      "Implemented accessible information architecture for patients and visitors",
-      "Built secure and maintainable backend with Django",
-      "Implemented content management features for hospital staff",
-      "Ensured performance optimization, security best practices, and SEO-friendly structure",
-      "Deployed on Linux (Ubuntu) server environment"
-    ],
-    stack: ["Django", "HTML/CSS", "PostgreSQL", "Linux", "Git"],
-    icon: "FaHospital",
-    color: "#ef4444",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Repavi Lodge",
+    title: "Repavi Lodges",
     subtitle: "Reservation & Property Management Platform",
-    period: "June - September 2025",
-    company: "Repavilodge",
+    period: "2025 - Present",
+    company: "Repavi Lodges",
     location: "Yaounde, Cameroon",
-    description: "Full-stack reservation and property management platform for furnished apartments",
+    description: "Full-stack reservation and property management platform for furnished apartments, with a custom admin dashboard and tenant-facing booking interface.",
     achievements: [
-      "Designed and developed complete reservation platform",
-      "Built custom administration interface using Django and Tailwind CSS",
+      "Designed and developed the complete reservation platform from scratch",
+      "Built a custom admin interface with Django + Tailwind CSS (statistics, filters, search)",
       "Implemented core modules: properties, cities, categories, photos, reservations",
-      "Developed advanced admin features: dashboards with statistics, filters, search",
+      "Built tenant-facing booking flow with availability calendar and confirmation emails",
       "Ensured responsive UI for desktop, tablet, and mobile devices",
-      "Prepared application for production with deployment configuration"
+      "Deployed on Linux (Ubuntu) server with Docker and automated backups"
     ],
     stack: ["Django", "PostgreSQL", "Tailwind CSS", "Docker", "Linux", "Git"],
     icon: "FaHome",
     color: "#f59e0b",
-    featured: true
+    featured: true,
+    demo: "https://repavilodges.com"
+  },
+  {
+    id: 3,
+    title: "DIGITAGRO API v2.0",
+    subtitle: "Agrosylvopastoral Platform — Backend & DevOps",
+    period: "Since July 2025",
+    company: "Hoop SARL",
+    location: "Yaounde, Cameroon",
+    description: "Production-ready REST API for a national agrosylvopastoral platform connecting producers, transporters, distributors, and consumers across Cameroon.",
+    achievements: [
+      "Designed and implemented a production-ready REST API for an agri-food supply chain",
+      "Architected a dynamic multi-role user system with automatic role activation",
+      "Built secure authentication and authorization (token-based auth, RBAC)",
+      "Implemented core modules: production management, orders, evaluations, notifications",
+      "Integrated real-time notifications using WebSockets and Redis",
+      "Documented the entire API with Swagger / OpenAPI",
+      "Containerized the application using Docker & Docker Compose",
+      "Deployed on Linux with automated migration and health-check workflows"
+    ],
+    stack: ["Django REST Framework", "PostgreSQL", "Redis", "Docker", "Linux", "Git"],
+    icon: "FaLeaf",
+    color: "#22c55e",
+    featured: true,
+    demo: "https://api.digitagro.cm"
   },
   {
     id: 4,
+    title: "Hôpital Régional Annexe d'Édéa",
+    subtitle: "Official Institutional Website",
+    period: "Since November 2025",
+    company: "Regional Annex Hospital of Edea",
+    location: "Edéa, Cameroon",
+    description: "Official institutional website for the Regional Annex Hospital of Edea, built with Django and deployed on a Linux server.",
+    achievements: [
+      "Designed and developed the official institutional website",
+      "Implemented accessible information architecture for patients and visitors",
+      "Built content management features for hospital staff (news, services, staff directory)",
+      "Ensured performance optimization, security best practices, and SEO",
+      "Deployed on Linux (Ubuntu) server environment with Nginx"
+    ],
+    stack: ["Django", "HTML/CSS", "PostgreSQL", "Nginx", "Linux", "Git"],
+    icon: "FaHospital",
+    color: "#ef4444",
+    featured: true,
+    demo: "https://hopital-regional-edea.com"
+  },
+  {
+    id: 5,
     title: "Academic Digital Platforms",
     subtitle: "Backend Development & Team Leadership",
     period: "Since January 2024",
-    company: "Centre de Développement Numérique - ESIGN Cameroon",
+    company: "Centre de Développement Numérique — ESIGN Cameroon",
     location: "Cameroon",
-    description: "Led the design and development of academic digital platforms from requirements analysis to production deployment",
+    description: "Led the design and development of academic digital platforms from requirements analysis to production deployment at ESIGN's digital development center.",
     achievements: [
-      "Led design and development of academic digital platforms from requirements to deployment",
-      "Designed system architecture and REST APIs",
-      "Coordinated development team using Agile (SCRUM) methodology",
+      "Led a development team using Agile (SCRUM) methodology",
+      "Designed system architecture and REST APIs for academic management",
       "Implemented backend services, databases, and deployment workflows",
-      "Ensured documentation, maintainability, and scalability of solutions"
+      "Ensured documentation, maintainability, and scalability of solutions",
+      "Delivered multiple modules: enrollment, scheduling, grading, notifications"
     ],
     stack: ["Django", "REST API", "PostgreSQL", "Docker", "SCRUM", "Git"],
     icon: "FaGraduationCap",
@@ -182,23 +220,68 @@ export const projects = [
     featured: true
   },
   {
-    id: 5,
+    id: 6,
     title: "RAIA E-Learning Platform",
     subtitle: "API Development for Digital Education",
     period: "Since September 2024",
     company: "RAIA (raia.cm)",
     location: "Cameroon",
-    description: "Designed and developed API for an e-learning platform with AI-driven solutions to support digital education",
+    description: "Designed and developed the backend API for an e-learning platform with AI-driven solutions to support digital education across Cameroon.",
     achievements: [
-      "Designed and developed an API for an e-learning platform",
-      "Built software and AI-driven solutions to support digital education",
-      "Collaborated with frontend teams to ensure seamless integration of services",
+      "Designed and developed the REST API for the e-learning platform",
+      "Built AI-driven features to support adaptive learning paths",
+      "Collaborated with frontend teams to ensure seamless service integration",
       "Implemented scalable backend architecture for educational content delivery"
     ],
     stack: ["Python", "Django", "REST API", "AI Integration", "Git"],
     icon: "FaBook",
     color: "#8b5cf6",
     featured: true
+  },
+  {
+    id: 7,
+    title: "LABOUSSOL",
+    subtitle: "Job Matching Platform — REST API",
+    period: "2025 - Present",
+    company: "Personal Project",
+    location: "Cameroon",
+    description: "REST API for a job matching platform connecting job seekers with employers in Cameroon, featuring advanced search, email notifications, and payment integration.",
+    achievements: [
+      "Designed and built a full REST API with Django REST Framework",
+      "Implemented advanced filtering and search for job listings",
+      "Built multi-role user system: job seekers, companies, admins",
+      "Integrated NotchPay payment gateway for premium subscriptions",
+      "Set up transactional email notifications via Postfix SMTP relay",
+      "Containerized with Docker & Docker Compose for production deployment",
+      "Documented all endpoints with Swagger / OpenAPI"
+    ],
+    stack: ["Django REST Framework", "PostgreSQL", "Docker", "Redis", "NotchPay", "Linux"],
+    icon: "FaBriefcase",
+    color: "#0891b2",
+    featured: true,
+    github: "https://github.com/davyemane/"
+  },
+  {
+    id: 8,
+    title: "Biang — PharmaLocate",
+    subtitle: "Mobile App — Real-time Pharmacy Geolocation",
+    period: "2026 - Present",
+    company: "Personal Project",
+    location: "Cameroon",
+    description: "Flutter mobile application for real-time geolocation of medications in pharmacies across Cameroon, with a self-hosted Supabase backend and MapLibre cartography.",
+    achievements: [
+      "Built a Flutter mobile app with real-time map of nearby pharmacies",
+      "Integrated MapLibre GL for smooth and customizable cartography",
+      "Implemented real-time stock management for pharmacies via Supabase",
+      "Built pharmacy self-registration flow with interactive map pin selection",
+      "Configured Firebase Cloud Messaging (FCM) for push notifications",
+      "Self-hosted Supabase on personal VPS via Docker for full data control"
+    ],
+    stack: ["Flutter", "Supabase", "MapLibre", "Firebase FCM", "Docker", "PostgreSQL"],
+    icon: "FaMobileAlt",
+    color: "#7c3aed",
+    featured: true,
+    github: "https://github.com/davyemane/"
   }
 ];
 
